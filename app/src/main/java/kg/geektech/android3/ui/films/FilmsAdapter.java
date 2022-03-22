@@ -3,9 +3,12 @@ package kg.geektech.android3.ui.films;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +18,12 @@ import kg.geektech.android3.databinding.ItemFilmBinding;
 
 public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmsViewHolder> {
     private List<Film> films = new ArrayList<>();
+    private ItemClick click;
+    private ImageView image;
+
+    public FilmsAdapter(ItemClick click) {
+        this.click = click;
+    }
 
     public void setFilms(List<Film> films) {
         this.films = films;
@@ -53,6 +62,12 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmsViewHol
         public void onBind(Film film) {
             binding.tvTitle.setText(film.getTitle());
             binding.tvDescription.setText(film.getDescription());
+
+            Glide.with(binding.image.getContext()).load(film.getImage()).into(binding.image);
+            itemView.setOnClickListener(view -> {
+                click.click(film);
+            });
+
         }
     }
 }

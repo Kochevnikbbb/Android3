@@ -8,6 +8,11 @@ public class Film {
     @SerializedName("original_title")
     String originalTitle;
     String description;
+    String image;
+
+    public String getImage() {
+        return image;
+    }
 
     public String getId() {
         return id;

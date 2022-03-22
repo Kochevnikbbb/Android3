@@ -10,5 +10,18 @@
         android:id="@+id/filmsFragment"
         android:name="kg.geektech.android3.ui.films.FilmsFragment"
         android:label="fragment_films"
-        tools:layout="@layout/fragment_films" />
+        tools:layout="@layout/fragment_films">
+        <action
+            android:id="@+id/action_filmsFragment_to_filmDetailFragment"
+            app:destination="@id/filmDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filmDetailFragment"
+        android:name="kg.geektech.android3.FilmDetailFragment"
+        android:label="fragment_film_detail"
+        tools:layout="@layout/fragment_film_detail">
+        <argument
+            android:name="kakugodno"
+            app:argType="kg.geektech.android3.data.models.Film" />
+    </fragment>
 </navigation>
