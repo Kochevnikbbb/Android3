@@ -57,7 +57,7 @@ public class FilmsFragment extends Fragment implements ItemClick{
                 if (response.isSuccessful() && response.body() != null) {
                     adapter.setFilms(response.body());
                 } else {
-                    Log.e("TAG", "onResponse: " + response.message());
+                    Log.e("TAG", "onResponse: " + response.errorBody());
                 }
             }
 
@@ -72,9 +72,6 @@ public class FilmsFragment extends Fragment implements ItemClick{
     public void click(Film film) {
         Bundle bundle = new Bundle();
         bundle.putString("id",film.getId());
-        /*NavHostFragment.findNavController(FilmsFragment.this).navigate(FilmDetailFragment
-        .actionFilmsFragmentToFilmDetailFragment(film));*/
-
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
         navController.navigate(R.id.filmDetailFragment, bundle);
     }

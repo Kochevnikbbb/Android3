@@ -63,7 +63,7 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.FilmsViewHol
             binding.tvTitle.setText(film.getTitle());
             binding.tvDescription.setText(film.getDescription());
 
-            Glide.with(binding.image.getContext()).load(film.getImage()).into(binding.image);
+           // Glide.with(binding.image.getContext()).load(film.getImage()).into(binding.image);
             itemView.setOnClickListener(view -> {
                 click.click(film);
             });

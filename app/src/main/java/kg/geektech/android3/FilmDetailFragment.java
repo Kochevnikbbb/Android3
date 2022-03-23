@@ -32,7 +32,7 @@ public class FilmDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentFilmDetailBinding.inflate(inflater,container,false);
+        binding = FragmentFilmDetailBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -48,8 +48,11 @@ public class FilmDetailFragment extends Fragment {
             public void onResponse(Call<Film> call, Response<Film> response) {
                 if (response.isSuccessful()) {
                     Film film = response.body();
-                    binding.imageTittle.setVisibility(View.GONE);
                     assert film != null;
+                    binding.producer.setText(film.getProducer());
+                    binding.director.setText(film.getDirector());
+                    binding.releaseDate.setText(film.getReleaseDate());
+                    binding.originalTitle.setText(film.getOriginalTitle());
                     binding.textTittle.setText(film.getTitle());
                     binding.Description.setText(film.getDescription());
                     Glide.with(requireActivity()).load(film.getImage()).into(binding.imageTittle);
